@@ -7,9 +7,9 @@ function Navbar() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="w-full flex justify-center top-[21px] z-50">
-      <nav className="w-[890px] h-[80px] bg-white border border-[#FCFCFC] rounded-[122px] shadow-[0_0_20px_0_#7F7F7F26] px-6 flex items-center">
-        <div className="w-[838px] h-[48px] flex items-center justify-between mx-auto">
+    <div className="w-full flex justify-center top-[21px] z-50 px-4 sm:px-0">
+      <nav className="w-full max-w-[890px] h-[80px] bg-white border border-[#FCFCFC] rounded-[122px] shadow-[0_0_20px_0_#7F7F7F26] px-4 sm:px-6 flex items-center">
+        <div className="w-full flex items-center justify-between mx-auto">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img src={logo} alt="Logo" className="h-10 w-auto object-contain" />
@@ -17,7 +17,7 @@ function Navbar() {
 
           {/* Navigation Links */}
           <ul
-            className="flex gap-10 font-satoshi text-[#303030]"
+            className="hidden md:flex gap-6 font-satoshi text-[#303030]"
             style={{
               fontWeight: 500,
               fontSize: "16px",
@@ -55,7 +55,7 @@ function Navbar() {
           {/* Create Jobs Button */}
           <button
             onClick={() => setShowModal(true)}
-            className="text-white font-semibold text-sm"
+            className="text-white font-semibold text-sm ml-4"
             style={{
               width: "125px",
               height: "38px",
