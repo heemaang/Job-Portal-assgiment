@@ -1,6 +1,6 @@
 
 import expIcon from "../assets/exp.png";
-import jobtypeIcon from "../assets/jobtype.png";
+// import jobtypeIcon from "../assets/jobtype.png";
 import packageIcon from "../assets/package.png";
 import cardlogo from "../assets/cardlogo.png"; // adjust extension if needed
 
@@ -96,7 +96,7 @@ function JobCard({ job }) {
 
         <div className="flex items-center gap-[4px] w-[94.9px] h-[22px] whitespace-nowrap">
           <img
-            src={jobtypeIcon}
+            // src={jobtypeIcon}
             alt="Job Type Icon"
             className="w-4 h-4 object-contain"
           />
