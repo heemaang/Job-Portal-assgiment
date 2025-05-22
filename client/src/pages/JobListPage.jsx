@@ -3,6 +3,11 @@ import { getAllJobs } from '../services/jobServices';
 import JobCard from '../components/JobCard';
 import FilterBar from '../components/FilterBar';
 
+// Import multiple logos
+import cardlogo1 from "../assets/cardlogo.png";
+import cardlogo2 from "../assets/cardlogo2.png";
+import cardlogo3 from "../assets/cardlogo3.png";
+
 function JobListPage() {
   const [jobs, setJobs] = useState([]);
 
@@ -10,10 +15,10 @@ function JobListPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('');
   const [jobType, setJobType] = useState('');
-const [salaryRange, setSalaryRange] = useState([50000, 150000]);
+  const [salaryRange, setSalaryRange] = useState([50000, 150000]);
 
-
-  
+  // Array of logos to cycle through
+  const cardLogos = [cardlogo1, cardlogo2, cardlogo3];
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -40,7 +45,13 @@ const [salaryRange, setSalaryRange] = useState([50000, 150000]);
       {/* Grid layout with 4 cards per row on large screens */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 justify-items-center">
         {jobs.length > 0 ? (
-          jobs.map((job) => <JobCard key={job._id} job={job} />)
+          jobs.map((job, index) => (
+            <JobCard
+              key={job._id}
+              job={job}
+              logo={cardLogos[index % cardLogos.length]} // Pass alternating logo here
+            />
+          ))
         ) : (
           <p className="col-span-full text-center">No jobs found.</p>
         )}

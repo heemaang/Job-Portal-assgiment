@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/jobs';
+const API_URL = 'https://job-portal-assgiment-u2nr.onrender.com/api/jobs';
 
 // filters is expected to be an object: { searchTerm, location, jobType, salaryRange }
 export const getAllJobs = async (filters = {}) => {

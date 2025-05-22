@@ -1,8 +1,7 @@
-
 import expIcon from "../assets/exp.png";
 // import jobtypeIcon from "../assets/jobtype.png";
 import packageIcon from "../assets/package.png";
-import cardlogo from "../assets/cardlogo.png"; // adjust extension if needed
+// import default logo removed, now use logo from prop
 import TypeIcon from "../assets/type.png";
 
 function getFixedSalaryLPA(monthlySalaryTo) {
@@ -21,7 +20,7 @@ function getFirstTwoPoints(desc) {
   return sentences.slice(0, 2);
 }
 
-function JobCard({ job }) {
+function JobCard({ job, logo }) {  // accept logo as prop
   const points = getFirstTwoPoints(job.description || "");
 
   return (
@@ -34,53 +33,40 @@ function JobCard({ job }) {
       </span>
 
       {/* Logo & Job Title Side-by-side */}
-     <div className="flex flex-col items-start mb-4">
-  {/* Logo */}
-  <div
-    className="flex items-center justify-center mb-3" // 👈 Adds spacing below the logo
-    style={{
-      width: "70px",
-      height: "70px",
-      borderRadius: "13.18px",
-      border: "1px solid #FFFFFF",
-      background: "linear-gradient(180deg, #FEFEFD 0%, #F1F1F1 100%)",
-      boxShadow: "0px 0px 10.25px 0px #94949440",
-    }}
-  >
-    <img
-      src={cardlogo}
-      alt="Company Logo"
-      className="w-15 h-15 object-contain"
-    />
-  </div>
+      <div className="flex flex-col items-start mb-4">
+        {/* Logo */}
+        <div
+          className="flex items-center justify-center mb-3"
+          style={{
+            width: "70px",
+            height: "70px",
+            borderRadius: "13.18px",
+            border: "1px solid #FFFFFF",
+            background: "linear-gradient(180deg, #FEFEFD 0%, #F1F1F1 100%)",
+            boxShadow: "0px 0px 10.25px 0px #94949440",
+          }}
+        >
+          <img
+            src={logo}   // <-- use logo prop here
+            alt="Company Logo"
+            className="w-13 h-13 object-contain"
+          />
+        </div>
 
-  {/* Job Title */}
-  <div
-    style={{
-      fontFamily: "Satoshi Variable",
-      fontWeight: 700,
-      fontSize: "20px",
-      lineHeight: "100%",
-      color: "#000000",
-      marginBottom: "4px", // 👈 Optional spacing before company name
-    }}
-  >
-    {job.title}
-  </div>
-
-  {/* Company Name */}
-  {/* <div
-    style={{
-      fontFamily: "Satoshi Variable",
-      fontWeight: 400,
-      fontSize: "16px",
-      color: "#5A5A5A",
-    }}
-  >
-    {job.companyName || "Company Name"}
-  </div> */}
-</div>
-
+        {/* Job Title */}
+        <div
+          style={{
+            fontFamily: "Satoshi Variable",
+            fontWeight: 700,
+            fontSize: "19px",
+            lineHeight: "100%",
+            color: "#000000",
+            marginBottom: "4px",
+          }}
+        >
+          {job.title}
+        </div>
+      </div>
 
       {/* Amenities row */}
       <div className="flex items-center gap-[24px] mb-3 w-full h-[22px]">
@@ -97,7 +83,7 @@ function JobCard({ job }) {
 
         <div className="flex items-center gap-[4px] w-[94.9px] h-[22px] whitespace-nowrap">
           <img
-            src={TypeIcon }
+            src={TypeIcon}
             alt="Job Type Icon"
             className="w-4 h-4 object-contain"
           />

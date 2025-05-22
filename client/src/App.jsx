@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import JobListPage from './pages/JobListPage';
 import JobCreatePage from './pages/JobCreatePage';
 import Navbar from './components/Navbar';
+import './assets/fonts/fonts.css';
+
 
 function App() {
   return (
