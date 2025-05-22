@@ -32,6 +32,7 @@
 //     throw error;
 //   }
 // };
+
 import axios from 'axios';
 
 const API_URL = 'https://job-portal-assgiment-u2nr.onrender.com/api/jobs';
