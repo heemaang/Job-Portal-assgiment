@@ -53,7 +53,7 @@ function JobListPage() {
             />
           ))
         ) : (
-          <p className="col-span-full text-center">No jobs found.</p>
+          <p className="col-span-full text-center">Loading...</p>
         )}
       </div>
     </div>
