@@ -7,16 +7,16 @@ const jobSchema = new mongoose.Schema({
   jobType: {
     type: String,
     enum: ['Full-time', 'Part-time', 'Contract', 'Internship'],
-    required: true
+    required: true,
   },
-  salaryRange: { type: String },           // optional
-  monthlySalaryFrom: { type: Number },     // optional
-  monthlySalaryTo: { type: Number },       // optional
-  description: { type: String, default: '' },      // optional
-  requirements: { type: String, default: '' },     // optional
-  responsibilities: { type: String, default: '' }, // optional
-  deadline: { type: Date },                 // optional
-  createdAt: { type: Date, default: Date.now }
+  salaryRange: { type: String },           // optional, store raw string (for display)
+  monthlySalaryFrom: { type: Number },     // optional, store min salary as number
+  monthlySalaryTo: { type: Number },       // optional, store max salary as number
+  description: { type: String, default: '' },
+  requirements: { type: String, default: '' },
+  responsibilities: { type: String, default: '' },
+  deadline: { type: Date },
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Job', jobSchema);

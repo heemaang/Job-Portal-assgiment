@@ -5,15 +5,23 @@ const API_URL = 'http://localhost:5000/api/jobs';
 // filters is expected to be an object: { searchTerm, location, jobType, salaryRange }
 export const getAllJobs = async (filters = {}) => {
   try {
-    const { searchTerm = '', location = '', jobType = '', salaryRange = '' } = filters;
+    const {
+      searchTerm = '',
+      location = '',
+      jobType = '',
+      salaryRange = [50000, 150000], // default range if not provided
+    } = filters;
+
+    const [minSalary, maxSalary] = salaryRange;
 
     const { data } = await axios.get(API_URL, {
       params: {
         search: searchTerm,
         location,
         jobType,
-        maxSalary: salaryRange // assuming backend expects maxSalary for filtering by salary range
-      }
+        minSalary,
+        maxSalary,
+      },
     });
 
     return data;
@@ -35,7 +43,7 @@ export const createJob = async (jobData) => {
 
 // import axios from 'axios';
 
-// const API_URL = 'https://job-portal-assgiment-u2nr.onrender.com/api/jobs';
+// const API_URL = 'http://localhost:5000/api/jobs';
 
 // // filters is expected to be an object: { searchTerm, location, jobType, salaryRange }
 // export const getAllJobs = async (filters = {}) => {
@@ -67,3 +75,11 @@ export const createJob = async (jobData) => {
 //     throw error;
 //   }
 // };
+
+
+
+
+
+
+
+

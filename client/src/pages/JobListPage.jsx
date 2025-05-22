@@ -10,7 +10,9 @@ function JobListPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('');
   const [jobType, setJobType] = useState('');
-  const [salaryRange, setSalaryRange] = useState(150000); // max salary default
+const [salaryRange, setSalaryRange] = useState([50000, 150000]);
+
+
   
 
   useEffect(() => {

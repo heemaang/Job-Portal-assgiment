@@ -7,7 +7,7 @@ function Navbar() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="w-full flex justify-center sticky top-[21px] z-50">
+    <div className="w-full flex justify-center top-[21px] z-50">
       <nav className="w-[890px] h-[80px] bg-white border border-[#FCFCFC] rounded-[122px] shadow-[0_0_20px_0_#7F7F7F26] px-6 flex items-center">
         <div className="w-[838px] h-[48px] flex items-center justify-between mx-auto">
 
@@ -19,10 +19,10 @@ function Navbar() {
           {/* Navigation Links */}
           <ul className="flex gap-10 font-satoshi font-semibold text-[16px] leading-[100%] tracking-[0%] text-[#303030]">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/jobs">Find Jobs</Link></li>
-            <li><Link to="/talents">Find Talents</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/testimonials">Testimonials</Link></li>
+            <li><Link to="/">Find Jobs</Link></li>
+            <li><Link to="/">Find Talents</Link></li>
+            <li><Link to="/">About Us</Link></li>
+            <li><Link to="/">Testimonials</Link></li>
           </ul>
 
           {/* Create Jobs Button */}
