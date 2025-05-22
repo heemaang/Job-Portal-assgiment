@@ -1,6 +1,6 @@
 
 import expIcon from "../assets/exp.png";
-import jobtypeIcon from "../assets/jobType.png";
+import jobtypeIcon from "../assets/jobtype.png";
 import packageIcon from "../assets/package.png";
 import cardlogo from "../assets/cardlogo.png"; // adjust extension if needed
 
