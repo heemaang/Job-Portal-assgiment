@@ -55,9 +55,9 @@ function JobCard({ job, logo }) {
         </div>
 
         {/* Job Title */}
-        <div
+        <div className="font-[Satoshi Variable]"
           style={{
-            fontFamily: "Satoshi Variable",
+        
             fontWeight: 700,
             fontSize: "19px",
             lineHeight: "100%",
