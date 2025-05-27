@@ -20,11 +20,12 @@ function getFirstTwoPoints(desc) {
   return sentences.slice(0, 2);
 }
 
-function JobCard({ job, logo }) {  // accept logo as prop
+function JobCard({ job, logo }) {
+  // accept logo as prop
   const points = getFirstTwoPoints(job.description || "");
 
   return (
-    <div className="relative bg-white p-4 rounded-[12px] shadow-[0px_0px_14px_0px_#D3D3D326] border border-gray-200 hover:shadow-xl transition w-[316px] h-[360px] flex flex-col justify-between">
+    <div className="relative bg-[#ffffff] p-4 rounded-[12px] shadow-[0px_0px_14px_0px_#D3D3D326] w-[316px] h-[360px] flex flex-col justify-between">
       {/* Time Tag */}
       <span className="absolute top-[16px] right-[16px] bg-[#B0D9FF] rounded-[10px] px-[10px] py-[7px] w-[75px] h-[33px] flex items-center justify-center">
         <span className="font-[Satoshi Variable] font-medium text-[14px] leading-[100%] text-center text-[#000000]">
@@ -47,7 +48,7 @@ function JobCard({ job, logo }) {  // accept logo as prop
           }}
         >
           <img
-            src={logo}   // <-- use logo prop here
+            src={logo} // <-- use logo prop here
             alt="Company Logo"
             className="w-13 h-13 object-contain"
           />
@@ -69,40 +70,32 @@ function JobCard({ job, logo }) {  // accept logo as prop
       </div>
 
       {/* Amenities row */}
-      <div className="flex items-center gap-[24px] mb-3 w-full h-[22px]">
-        <div className="flex items-center gap-[4px] w-[94.9px] h-[22px] whitespace-nowrap">
-          <img
-            src={expIcon}
-            alt="Experience Icon"
-            className="w-4 h-4 object-contain"
-          />
-          <span className="font-[Satoshi Variable] font-medium text-[16px] leading-[100%] text-[#5A5A5A]">
-            {job.experience || "1–3 yr Exp"}
-          </span>
-        </div>
+     <div className="grid grid-cols-3 gap-x-[12px] items-center mb-3 w-full">
+  {/* Experience */}
+  <div className="flex items-center gap-[4px] justify-center">
+    <img src={expIcon} alt="Experience Icon" className="w-4 h-4 object-contain" />
+    <span className="font-[Satoshi Variable] font-medium text-[16px] leading-[100%] text-[#5A5A5A] whitespace-nowrap">
+      {job.experience || "1–3 yr Exp"}
+    </span>
+  </div>
 
-        <div className="flex items-center gap-[4px] w-[94.9px] h-[22px] whitespace-nowrap">
-          <img
-            src={TypeIcon}
-            alt="Job Type Icon"
-            className="w-4 h-4 object-contain"
-          />
-          <span className="font-[Satoshi Variable] font-medium text-[16px] leading-[100%] text-[#5A5A5A]">
-            {job.jobType || "Onsite"}
-          </span>
-        </div>
+  {/* Job Type */}
+  <div className="flex items-center gap-[4px] justify-center">
+    <img src={TypeIcon} alt="Job Type Icon" className="w-4 h-4 object-contain" />
+    <span className="font-[Satoshi Variable] font-medium text-[16px] leading-[100%] text-[#5A5A5A] whitespace-nowrap">
+      {job.jobType || "Onsite"}
+    </span>
+  </div>
 
-        <div className="flex items-center gap-[4px] w-[94.9px] h-[22px] whitespace-nowrap">
-          <img
-            src={packageIcon}
-            alt="Salary Icon"
-            className="w-4 h-4 object-contain"
-          />
-          <span className="font-[Satoshi Variable] font-medium text-[16px] leading-[100%] text-[#5A5A5A]">
-            {getFixedSalaryLPA(job.monthlySalaryTo)}
-          </span>
-        </div>
-      </div>
+  {/* Salary */}
+  <div className="flex items-center gap-[4px] justify-center">
+    <img src={packageIcon} alt="Salary Icon" className="w-4 h-4 object-contain" />
+    <span className="font-[Satoshi Variable] font-medium text-[16px] leading-[100%] text-[#5A5A5A] whitespace-nowrap">
+      {getFixedSalaryLPA(job.monthlySalaryTo)}
+    </span>
+  </div>
+</div>
+
 
       {/* Description bullets */}
       <div className="text-gray-600 text-sm text-left font-[Satoshi Variable] mt-2 min-h-[56px]">
@@ -118,7 +111,7 @@ function JobCard({ job, logo }) {  // accept logo as prop
 
       {/* Apply Button */}
       <div className="flex justify-center mt-auto pt-4">
-        <button className="w-[284px] h-[46px] mt-auto rounded-[10px] border border-[#00AAFF] px-[10px] py-[12px] bg-[#00AAFF] text-white font-semibold shadow-[0_0_14px_0_#5D5D5D26] self-center">
+        <button className="w-[284px] h-[46px] mt-auto rounded-[10px] border border-[#00AAFF] px-[10px] py-[12px] bg-[#00AAFF] text-white shadow-[0_0_14px_0_#5D5D5D26] self-center">
           Apply Now
         </button>
       </div>
