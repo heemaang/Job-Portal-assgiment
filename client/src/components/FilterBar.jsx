@@ -19,7 +19,8 @@ function FilterBar({
   setSalaryRange,
 }) {
   return (
-    <div className="bg-[#ffffff] shadow-md p-4 rounded-xl flex flex-wrap gap-4 justify-between items-center">
+    <div className="bg-[#ffffff] p-4 flex flex-wrap gap-4 justify-between items-center w-full max-w-none mx-0">
+
       {/* Search Input */}
       <div className="relative w-full sm:w-[280px]">
         <img
