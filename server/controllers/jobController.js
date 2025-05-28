@@ -1,8 +1,7 @@
 const Job = require('../models/Job');
-
 const getAllJobs = async (req, res) => {
   try {
-    const { search, location, jobType, maxSalary } = req.query;
+    const { search, location, jobType } = req.query;
 
     const query = {};
 
@@ -14,23 +13,24 @@ const getAllJobs = async (req, res) => {
       query.location = { $regex: location, $options: 'i' };
     }
 
-    if (jobType) {
+    if (jobType && jobType.trim() !== '') {
       query.jobType = jobType;
     }
 
-    if (maxSalary !== undefined && maxSalary !== '') {
-      const maxSalaryNum = Number(maxSalary);
-      if (!isNaN(maxSalaryNum)) {
-        query.monthlySalaryFrom = { $lte: maxSalaryNum };
-      }
-    }
+    const minSalaryNum = Number(req.query.minSalary);
+    const maxSalaryNum = Number(req.query.maxSalary);
 
+    if (!isNaN(minSalaryNum) && !isNaN(maxSalaryNum)) {
+      query.monthlySalaryFrom = { $gte: minSalaryNum, $lte: maxSalaryNum };
+    }
     const jobs = await Job.find(query).sort({ createdAt: -1 });
     res.json(jobs);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
 
 // CREATE a new job
 const createJob = async (req, res) => {

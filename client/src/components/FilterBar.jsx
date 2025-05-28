@@ -83,13 +83,24 @@ function FilterBar({
 
         {/* Dropdown */}
         <select
-          className="border border-gray-300 rounded-lg px-10 py-2.5 w-full appearance-none focus:outline-none focus:ring-0"
+          className={`border border-gray-300 rounded-lg px-10 py-2.5 w-full appearance-none focus:outline-none focus:ring-0 ${
+            jobType === "" ? "text-gray-400" : "text-black"
+          }`}
           value={jobType}
-          onChange={(e) => setJobType(e.target.value)}
+          onChange={(e) => {
+            const selectedValue = e.target.value;
+            if (selectedValue === "") {
+              // Clear all filters
+              setSearchTerm("");
+              setLocation("");
+              setSalaryRange([50000, 150000]);
+              setJobType(""); // still explicitly reset
+            } else {
+              setJobType(selectedValue);
+            }
+          }}
         >
-          <option value="" className="font-normal">
-            Job Type
-          </option>
+          <option value="">Job Type</option>
           <option value="Full-time">Full-time</option>
           <option value="Part-time">Part-time</option>
           <option value="Internship">Internship</option>
@@ -131,9 +142,12 @@ function FilterBar({
             renderTrack={({ props, children }) => (
               <div
                 {...props}
+                ref={props.ref}
+                onMouseDown={props.onMouseDown}
+                onTouchStart={props.onTouchStart}
                 style={{
                   ...props.style,
-                  height: "1.5px", // Reduced thickness here
+                  height: "1.5px",
                   width: "100%",
                   background: getTrackBackground({
                     values: salaryRange,
@@ -141,7 +155,6 @@ function FilterBar({
                     min: MIN,
                     max: MAX,
                   }),
-                  borderRadius: "4px",
                 }}
               >
                 {children}
@@ -158,6 +171,8 @@ function FilterBar({
                   backgroundColor: "#FFFFFF",
                   border: "6px solid #000000",
                   boxShadow: "0px 0px 2px #aaa",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
